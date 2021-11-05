@@ -4,6 +4,11 @@
   <img src="/result.gif" height="500">
 </p>
 
+## Requirements
+  - Qt 5
+  - [Qwt](https://qwt.sourceforge.io/index.html#installonmainpage) (>= 6.1.2)
+  - cmake
+
 ## Compilation and Run
 
 Before you start you should specify the `QWT_ROOT` environment variable:
