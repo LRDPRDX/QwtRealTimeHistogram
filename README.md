@@ -19,11 +19,11 @@ class as a thread manager -- as it is supposed to be.
 ### The `wrong` version
 
 This is the wrong way to use multithreading in Qt. This comes from the wrong Qt documentation and based on
-extending the `QThread` class. Please, don't use this variant in your projects. 
+extending the `QThread` class. Please, don't use this variant in your projects.
 
 ## Requirements
-  - Qt 5
-  - [Qwt](https://qwt.sourceforge.io/index.html#installonmainpage) (>= 6.1.2)
+  - ~~Qt 5~~ Qt 6
+  - [Qwt](https://qwt.sourceforge.io/index.html#installonmainpage) (>= 6.2.0)
   - cmake
 
 ## Compilation and Run
@@ -35,7 +35,7 @@ export QWT_ROOT=/path/to/Qwt
 it stores the path to the root directory of the Qwt library on your system. In my case, for example (this line is in the `.bashrc` file):
 
 ```
-export QWT_ROOT=/usr/local/qwt-6.1.2
+export QWT_ROOT=/usr/local/qwt-6.2.0
 ```
 
 After you've done with it, clone the repo:
@@ -57,3 +57,6 @@ And run the example:
 ```
 ./real
 ```
+
+NOTE: that I installed Qt 6 from source that is why I need `CMAKE_PREFIX_PATH` in my `CMakeLists.txt`. In your case you might not need it.
+
