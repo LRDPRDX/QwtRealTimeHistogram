@@ -3,6 +3,7 @@
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QPen>
 
 #include <qwt_plot.h>
 #include <qwt_plot_histogram.h>
@@ -10,6 +11,8 @@
 #include <qwt_plot_layout.h>
 #include <qwt_legend.h>
 #include <qwt_plot_marker.h>
+#include <qwt_scale_map.h>
+#include <qwt_text.h>
 
 #include "RealTimeHistogram.h"
 

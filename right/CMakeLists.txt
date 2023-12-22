@@ -2,29 +2,28 @@ cmake_minimum_required(VERSION 3.7.0)
 
 project(gvmepp VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+list(APPEND CMAKE_PREFIX_PATH "~/Tools/qt/qt6-install/lib/cmake/Qt6")
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+qt_standard_project_setup()
 
 file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/*.cpp)
 file(GLOB HEADERS ${PROJECT_SOURCE_DIR}/*.h)
 
-add_executable(target ${HEADERS} ${SOURCES})
+qt_add_executable(target ${HEADERS} ${SOURCES})
 
-target_link_libraries(target PUBLIC Qt5::Widgets)
+find_library(QWT_QT6_LIBRARY qwt HINTS $ENV{QWT_ROOT}/lib)
+target_link_libraries(target PRIVATE ${QWT_QT6_LIBRARY})
+target_link_libraries(target PRIVATE Qt6::Widgets)
 
-find_library(QWT_QT5_LIBRARY qwt HINTS $ENV{QWT_ROOT}/lib)
-target_link_libraries(target PUBLIC ${QWT_QT5_LIBRARY})
-
-target_include_directories(target PUBLIC "${PROJECT_SOURCE_DIR}/inc")
-target_include_directories(target PUBLIC $ENV{QWT_ROOT}/include)
+target_include_directories(target PRIVATE "${PROJECT_SOURCE_DIR}/inc")
+target_include_directories(target PRIVATE $ENV{QWT_ROOT}/include)
 
 set_target_properties(target
                       PROPERTIES OUTPUT_NAME real)
 
 install(TARGETS target)
+

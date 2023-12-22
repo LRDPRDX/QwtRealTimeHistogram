@@ -18,6 +18,8 @@
 #include <qwt_plot_layout.h>
 #include <qwt_legend.h>
 #include <qwt_plot_marker.h>
+#include <qwt_scale_map.h>
+#include <qwt_text.h>
 
 #include "Producer.h"
 #include "Dialogs.h"
